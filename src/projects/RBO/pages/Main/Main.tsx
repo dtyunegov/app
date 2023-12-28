@@ -1,23 +1,27 @@
 import { urls } from "../../constants/Urls"
 import { PersonForm } from "../../components/PersonForm/PersonForm"
-import { Provider } from "react-redux"
+import { Provider, useDispatch } from "react-redux"
 import store from "../../store/index"
-export const Main = () => {
+import { IBrowser } from "../../../../browser/IBrowser"
+import { getTogo } from "../../store/api-action"
 
-  const openBrowser = (url: string) => {
-    chrome.tabs.query({active: true, currentWindow:true}, () => {
-      chrome.windows.create({
-        url: url,
-        incognito: true
-      })
-    })  
-  }
+type MainProps = {
+  browser: IBrowser
+}
+
+export const Main = ({browser}: MainProps) => {
+  const dispatch = useDispatch()
+
       return (
         <Provider store={store}>
           <main>
             <PersonForm/>
             <div className="button__inner">
-              <button className="open" onClick={() => openBrowser(urls)}>Открыть браузер</button>
+              <button className="open" onClick={() => browser.openBrowser(urls)}>Открыть браузер</button>
+              <button className="get" onClick={() => {
+                      dispatch(getTogo())
+              }}>Запрос</button>
+
             </div>
           </main>
       </Provider>

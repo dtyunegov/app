@@ -1,11 +1,12 @@
 import './App.css'
-import { Main as RBO } from './projects/RBO/pages/Main/Main'
+import Chrome from './browser/chrome/chrome'
+import { RBO } from './projects/RBO/RBO'
 
 function App() {
-
+  const browser = new Chrome()
   return (
     <div className="app">
-      <RBO/>
+      <RBO browser={browser}/>
     </div>
   )
 }
