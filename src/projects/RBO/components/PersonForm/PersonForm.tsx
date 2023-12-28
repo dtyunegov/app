@@ -29,6 +29,10 @@ export const PersonForm = () => {
               }, index)
               }}/>
             <input type="checkbox" checked={element.isActive} onChange={() => {
+              changePersonDispatch({
+                ...element,
+                isActive: !element.isActive 
+              }, index)
               }}/>
           </div>
           )}

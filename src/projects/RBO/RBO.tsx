@@ -1,7 +1,7 @@
 import { Provider } from "react-redux"
 import { IBrowser } from "../../browser/IBrowser"
-import store from "./store"
 import { Main } from "./pages/Main/Main"
+import { store } from "./store"
 
 type MainProps = {
   browser: IBrowser
